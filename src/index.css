@@ -1,0 +1,45 @@
+.app{
+  height: 100vh;
+  display: flex;
+  background-color: #020230;
+  color: white;
+}
+
+.main{
+  width: 75%;  
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #020230), url("./assets/bg.jpg") center;
+}
+
+.pyramid{
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moneyList{
+  list-style: none;
+  width: 100%;
+  padding: 20px;
+}
+
+.listItem{
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.listItem.active{
+  background-color: teal;
+}
+
+.questNum{
+  font-size: 18px;
+  font-weight: 100;
+  width: 20%;
+}
+.questPrice{
+  font-size: 20px;
+  font-weight: 300;
+}

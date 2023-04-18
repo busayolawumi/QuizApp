@@ -1,0 +1,17 @@
+export const moneyList = [
+    {questNum: 1, questPrice: `$ 100`},
+    {questNum: 2, questPrice: `$ 200`},
+    {questNum: 3, questPrice: `$ 300`},
+    {questNum: 4, questPrice: `$ 500`},
+    {questNum: 5, questPrice: `$ 1,000`},
+    {questNum: 6, questPrice: `$ 2,000`},
+    {questNum: 7, questPrice: `$ 4,000`},
+    {questNum: 8, questPrice: `$ 8,000`},
+    {questNum: 9, questPrice: `$ 16,000`},
+    {questNum: 10, questPrice: `$ 32,000`},
+    {questNum: 11, questPrice: `$ 64,000`},
+    {questNum: 12, questPrice: `$ 125,000`},
+    {questNum: 13, questPrice: `$ 250,000`},
+    {questNum: 14, questPrice: `$ 500,000`},
+    {questNum: 15, questPrice: `$ 1,000,000`},
+].reverse()
