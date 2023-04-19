@@ -6,13 +6,18 @@ import { data } from '../scripts/questions'
 const Hero = () => { 
   const [questNumber, setQuestNumber] = useState(1)
   const [timer, setTimer] = useState(false)
+  const [earned, setEarned] = useState("$ 0")
   return (
     <div className='app'>
       <div className="main">
+        {timer ? (<h1>You earned: {earned}</h1>) : (
+      <>
         <div className="top">
           <div className="timer">30</div>
         </div>
         <div className="bottom"><Trivia data={data} setTimer={setTimer} questNumber={questNumber} setQuestNumber={setQuestNumber} /></div>
+      </>
+        )}
       </div>
       <div className="pyramid">
         <ul className='moneyList'>
