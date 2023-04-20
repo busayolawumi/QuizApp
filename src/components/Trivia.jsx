@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../styles/trivia.css'
 
-export default function Trivia({ data, setTimer, questNumber, setQuestNumber }) {
+export default function Trivia({ data, setStop, questNumber, setQuestNumber }) {
 
   const [question, setQuestion] = useState(null);
   const [ansPick, setAnsPick] = useState(null);
@@ -29,7 +29,7 @@ export default function Trivia({ data, setTimer, questNumber, setQuestNumber }) 
         setQuestNumber((prev) => prev + 1)
         setAnsPick(null)
       }else{
-        setTimer(true)
+        setStop(true)
       }
     })
   }

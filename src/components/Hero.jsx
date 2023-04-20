@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Trivia from './Trivia'
 import { moneyList } from '../scripts/moneyList'
 import { data } from '../scripts/questions'
+import Timer from './Timer'
 
 const Hero = () => { 
   const [questNumber, setQuestNumber] = useState(1)
-  const [timer, setTimer] = useState(false)
+  const [stop, setStop] = useState(false)
   const [earned, setEarned] = useState(`$ ${0}`)
 
 useEffect(() => {
@@ -14,12 +15,12 @@ useEffect(() => {
   return (
     <div className='app'>
       <div className="main">
-        {timer ? (<h1 className='endText'>You earned: {earned}</h1>) : (
+        {stop ? (<h1 className='endText'>You earned: {earned}</h1>) : (
       <>
         <div className="top">
-          <div className="timer">30</div>
+          <div className="timer"><Timer setStop={setStop} questNumber={questNumber} /></div>
         </div>
-        <div className="bottom"><Trivia data={data} setTimer={setTimer} questNumber={questNumber} setQuestNumber={setQuestNumber} /></div>
+        <div className="bottom"><Trivia data={data} setStop={setStop} questNumber={questNumber} setQuestNumber={setQuestNumber} /></div>
       </>
         )}
       </div>
@@ -27,8 +28,7 @@ useEffect(() => {
         <ul className='moneyList'>
           {moneyList.map(({ questNum, questPrice }) => (
             <li className={questNumber === questNum ? "listItem active" : "listItem"} key={questNum}>
-              <span className='questNum'>{questNum}</span>
-              <span className='questPrice'>{questPrice}</span>
+               <span className='questPrice'>{questPrice}</span>
             </li>
           ))}
         </ul>
