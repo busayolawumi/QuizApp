@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
+import wrong from '../assets/wrong.mp3'
+import useSound from 'use-sound'
 
 export default function Timer({ setStop, questNumber }) {
-    const [timer, setTimer] = useState(20)
+    const [timer, setTimer] = useState(30)
+    const [wrongAns] = useSound(wrong)
 
     useEffect(() => {
         if(timer === 0){
-            return setStop(true)
+            setStop(true)
+            wrongAns()
         }
         
       const interval = setInterval(() => {
@@ -15,7 +19,7 @@ export default function Timer({ setStop, questNumber }) {
     }, [setStop, timer])  
 
     useEffect(() => {
-        setTimer(20)
+        setTimer(30)
     }, [questNumber])
   return timer
 }

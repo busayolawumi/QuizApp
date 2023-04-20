@@ -12,7 +12,7 @@ export default function Trivia({ data, setStop, questNumber, setQuestNumber }) {
   const [className, setClassName] = useState("answer");
   const [letsPlay] = useSound(play)
   const [correctAns] = useSound(correct)
-  // const [wrongAns] = useSound(wrong)
+  const [wrongAns] = useSound(wrong)
 
   //Plays the starting sounds as soon as the page loads or refreshes
   useEffect(() => {
@@ -36,10 +36,15 @@ export default function Trivia({ data, setStop, questNumber, setQuestNumber }) {
     setAnsPick(a);
     setClassName("answer active");
     delay(1500, () => setClassName( a.correct ? "answer correct" : "answer wrong"));
+    if(a.correct){
+      delay(3000, () => correctAns())
+    }else{
+      delay(3000, () => wrongAns())
+    }
+    
     delay(4500, () => {
       //If answer is correct, plays correct song, questNumber by 1 to change to next question and clear selection
       if(a.correct) {
-        correctAns();
         delay(1000, () => {
           setQuestNumber((prev) => prev + 1)
           setAnsPick(null)
