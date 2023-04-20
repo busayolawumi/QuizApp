@@ -3,6 +3,8 @@ import Trivia from './Trivia'
 import { moneyList } from '../scripts/moneyList'
 import { data } from '../scripts/questions'
 import Timer from './Timer'
+import wrong from '../assets/wrong.mp3'
+import useSound from 'use-sound'
 
 const Hero = () => { 
   const [questNumber, setQuestNumber] = useState(1)
@@ -12,10 +14,19 @@ const Hero = () => {
 useEffect(() => {
     questNumber > 1 && setEarned(moneyList.find((m) => m.questNum === questNumber - 1).questPrice);
 }, [moneyList, questNumber])
+
+const [wrongAns] = useSound(wrong)
+
   return (
     <div className='app'>
       <div className="main">
-        {stop ? (<h1 className='endText'>You earned: {earned}</h1>) : (
+        {stop ? 
+        (
+        <>
+        {wrongAns()}
+        <h1 className='endText'>You earned: {earned}</h1>
+        </>
+        ) : (
       <>
         <div className="top">
           <div className="timer"><Timer setStop={setStop} questNumber={questNumber} /></div>

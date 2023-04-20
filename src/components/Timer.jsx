@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 
 export default function Timer({ setStop, questNumber }) {
-    const [timer, setTimer] = useState(30)
+    const [timer, setTimer] = useState(20)
 
     useEffect(() => {
-        if(timer === 0) return setStop(true)
+        if(timer === 0){
+            return setStop(true)
+        }
+        
       const interval = setInterval(() => {
         setTimer((prev) => prev - 1)
       }, 1000);
@@ -12,7 +15,7 @@ export default function Timer({ setStop, questNumber }) {
     }, [setStop, timer])  
 
     useEffect(() => {
-        setTimer(30)
+        setTimer(20)
     }, [questNumber])
   return timer
 }

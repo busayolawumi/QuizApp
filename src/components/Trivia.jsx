@@ -1,11 +1,23 @@
 import { useEffect, useState } from 'react';
 import '../styles/trivia.css'
+import useSound from 'use-sound';
+import play from '../assets/play.mp3'
+import correct from '../assets/correct.mp3'
+import wrong from '../assets/wrong.mp3'
 
 export default function Trivia({ data, setStop, questNumber, setQuestNumber }) {
 
   const [question, setQuestion] = useState(null);
   const [ansPick, setAnsPick] = useState(null);
   const [className, setClassName] = useState("answer");
+  const [letsPlay] = useSound(play)
+  const [correctAns] = useSound(correct)
+  // const [wrongAns] = useSound(wrong)
+
+  //Plays the starting sounds as soon as the page loads or refreshes
+  useEffect(() => {
+    letsPlay();
+  }, [letsPlay])
 
   //Sets the question to be selected from the array to be change after data and questnumber changes
   useEffect(() => {
@@ -25,11 +37,16 @@ export default function Trivia({ data, setStop, questNumber, setQuestNumber }) {
     setClassName("answer active");
     delay(1500, () => setClassName( a.correct ? "answer correct" : "answer wrong"));
     delay(4500, () => {
+      //If answer is correct, plays correct song, questNumber by 1 to change to next question and clear selection
       if(a.correct) {
-        setQuestNumber((prev) => prev + 1)
-        setAnsPick(null)
+        correctAns();
+        delay(1000, () => {
+          setQuestNumber((prev) => prev + 1)
+          setAnsPick(null)
+        })
+      //if answer is wrong, setStop to false to display the amount earned after
       }else{
-        setStop(true)
+          setStop(true)
       }
     })
   }
