@@ -4,6 +4,7 @@ export default function Start({ setUsername }) {
 
     const inputRef = useRef();
 
+    //sets username to the entered value and only sets if the imput is not left empty
     const handleClick = () => {
         inputRef.current.value && setUsername(inputRef.current.value)
     }  

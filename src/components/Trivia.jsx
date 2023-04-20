@@ -36,6 +36,8 @@ export default function Trivia({ data, setStop, questNumber, setQuestNumber }) {
     setAnsPick(a);
     setClassName("answer active");
     delay(1500, () => setClassName( a.correct ? "answer correct" : "answer wrong"));
+
+    //checks if question is correct or not and plays the appropriate sound at a delayed time exactly the same with how long it takes for the blinking animation to complete
     if(a.correct){
       delay(3000, () => correctAns())
     }else{
@@ -43,7 +45,7 @@ export default function Trivia({ data, setStop, questNumber, setQuestNumber }) {
     }
     
     delay(4500, () => {
-      //If answer is correct, plays correct song, questNumber by 1 to change to next question and clear selection
+      //If answer is correct, increase questNumber by 1 to change to next question and clear selection
       if(a.correct) {
         delay(1000, () => {
           setQuestNumber((prev) => prev + 1)
