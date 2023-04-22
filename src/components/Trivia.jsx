@@ -59,6 +59,7 @@ export default function Trivia({ data, setStop, questNumber, setQuestNumber, set
       }
     })
 
+    //sets finish to true so it triggers the display of the winners page only after the user has answered all questions correctly, plays the win sound at the same time the page is displayed
     delay(5500, () => {
       if(questNumber === 15 && a.correct){
         setFinish(true);

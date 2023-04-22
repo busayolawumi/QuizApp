@@ -11,6 +11,7 @@ const Win = ({ earned, username }) => {
         setHeight(confetiRef.current.clientHeight);
         setWidth(confetiRef.current.clientWidth);
       }, []);
+
   return (
     <div className="finishPage" ref={confetiRef}>
         <h1 className='finishText'>🎊🎊🎊 <br />
