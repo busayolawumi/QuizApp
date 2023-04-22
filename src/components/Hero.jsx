@@ -9,6 +9,7 @@ const Hero = () => {
   const [username, setUsername] = useState(null)
   const [questNumber, setQuestNumber] = useState(1)
   const [stop, setStop] = useState(false)
+  const [finish, setFinish] = useState(false)
   const [earned, setEarned] = useState(`$ ${0}`)
 
   //changes the value of how much earned only after question 1 has been answered correctly(so that it doesn't change it from 0), finds the question number that it is on at the moment and return the price for the question before it 
@@ -16,21 +17,23 @@ const Hero = () => {
     questNumber > 1 && setEarned(moneyList.find((m) => m.questNum === questNumber - 1).questPrice);
   }, [moneyList, questNumber])
 
-
   return (
     <div className='app'>
       {username ? (
         <>
           <div className="main">
-            {stop ? 
-              (<h1 className='endText'>You earned: {earned}</h1>) : (
+            {stop 
+              ? (<h1 className='endText'>You earned: {earned}</h1>) 
+              : finish ? (<h1 className='finishText'>🎊🎊🎊 <br /> Congratulations {username}, you are now a millionaire. <br /> You've won the grand sum of: {earned}</h1>)
+              : (
               <>
                 <div className="top">
                   <div className="timer"><Timer setStop={setStop} questNumber={questNumber} /></div>
                 </div>
-                <div className="bottom"><Trivia data={data} setStop={setStop} questNumber={questNumber} setQuestNumber={setQuestNumber} /></div>
+                <div className="bottom"><Trivia data={data} setStop={setStop} questNumber={questNumber} setQuestNumber={setQuestNumber} setFinish={setFinish} /></div>
               </>
-            )}
+              )
+            }
           </div>
           <div className="pyramid">
             <ul className='moneyList'>

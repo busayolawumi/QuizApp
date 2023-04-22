@@ -4,8 +4,9 @@ import useSound from 'use-sound';
 import play from '../assets/play.mp3'
 import correct from '../assets/correct.mp3'
 import wrong from '../assets/wrong.mp3'
+import win from '../assets/win.mp3'
 
-export default function Trivia({ data, setStop, questNumber, setQuestNumber }) {
+export default function Trivia({ data, setStop, questNumber, setQuestNumber, setFinish }) {
 
   const [question, setQuestion] = useState(null);
   const [ansPick, setAnsPick] = useState(null);
@@ -13,6 +14,7 @@ export default function Trivia({ data, setStop, questNumber, setQuestNumber }) {
   const [letsPlay] = useSound(play)
   const [correctAns] = useSound(correct)
   const [wrongAns] = useSound(wrong)
+  const [winSound] = useSound(win)
 
   //Plays the starting sounds as soon as the page loads or refreshes
   useEffect(() => {
@@ -56,8 +58,15 @@ export default function Trivia({ data, setStop, questNumber, setQuestNumber }) {
           setStop(true)
       }
     })
+
+    delay(5500, () => {
+      if(questNumber === 1 && a.correct){
+        setFinish(true);
+        winSound()
+      }
+    })
   }
-  
+
   return (
     <div className="trivia">
         <div className="question">{question?.question}</div>
