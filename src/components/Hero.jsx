@@ -4,6 +4,7 @@ import { moneyList } from '../scripts/moneyList'
 import { data } from '../scripts/questions'
 import Timer from './Timer'
 import Start from './Start'
+import Win from './Win'
 
 const Hero = () => { 
   const [username, setUsername] = useState(null)
@@ -24,7 +25,7 @@ const Hero = () => {
           <div className="main">
             {stop 
               ? (<h1 className='endText'>You earned: {earned}</h1>) 
-              : finish ? (<h1 className='finishText'>🎊🎊🎊 <br /> Congratulations {username}, you are now a millionaire. <br /> You've won the grand sum of: {earned}</h1>)
+              : finish ? (<Win earned={earned} username={username} />)
               : (
               <>
                 <div className="top">

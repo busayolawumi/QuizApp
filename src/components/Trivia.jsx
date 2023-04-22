@@ -60,7 +60,7 @@ export default function Trivia({ data, setStop, questNumber, setQuestNumber, set
     })
 
     delay(5500, () => {
-      if(questNumber === 1 && a.correct){
+      if(questNumber === 15 && a.correct){
         setFinish(true);
         winSound()
       }

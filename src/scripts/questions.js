@@ -131,12 +131,12 @@ export const data = [
     },
     {
       id: 14,
-      question: "What is the largest mammal in the world?",
+      question: "What is the highest waterfall in the world?",
       answers: [
-        { text: "Blue whale", correct: true },
-        { text: "African elephant", correct: false },
-        { text: "Giraffe", correct: false },
-        { text: "Hippopotamus", correct: false }
+        { text: "Angel Falls", correct: true },
+        { text: "Niagara Falls", correct: false },
+        { text: "Iguazu Falls", correct: false },
+        { text: "Victoria Falls", correct: false }
       ]
     },
     {
